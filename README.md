@@ -1,19 +1,19 @@
-# The module [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/the-module/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/the-module)
+# One Dot [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/one-dot/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/one-dot)
 
-My awesome module.
+CloudFlare's 1.1.1.1 DNS service in NodeJS.
 
-[![NPM Badge](https://nodei.co/npm/the-module.png)](https://npmjs.com/package/the-module)
+[![NPM Badge](https://nodei.co/npm/one-dot.png)](https://npmjs.com/package/one-dot)
 
 ## Install
 
 ```sh
-npm install the-module
+npm install one-dot
 ```
 
 ## Usage
 
 ```js
-const theModule = require("the-module");
+const theModule = require("one-dot");
 
 theModule("unicorns");
 //=> 'unicorns & rainbows'

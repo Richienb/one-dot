@@ -1,13 +1,14 @@
 {
-    "name": "the-module",
+    "name": "one-dot",
     "version": "0.0.0",
-    "description": "My awesome module.",
-    "repository": "https://github.com/Richienb/the-module.git",
+    "description": "CloudFlare's 1.1.1.1 DNS service in NodeJS.",
+    "repository": "https://github.com/Richienb/one-dot.git",
     "author": "Richie Bendall <richiebendall@gmail.com>",
     "license": "MIT",
     "main": "index.js",
     "files": [
-        "index.js"
+        "index.js",
+        "utils/codes.js"
     ],
     "engines": {
         "node": ">=8"
@@ -16,12 +17,23 @@
         "lint": "eslint .",
         "test": "yarn lint && ava"
     },
-    "keywords": [],
-    "dependencies": {},
+    "keywords": [
+        "1.1.1.1",
+        "cloudflare",
+        "dns"
+    ],
+    "dependencies": {
+        "bluebird": "^3.7.1",
+        "cross-fetch": "^3.0.4",
+        "default-exports": "^1.0.0",
+        "dns-over-tls": "^0.0.8",
+        "query-string": "^6.8.3",
+        "universalify": "^0.1.2"
+    },
     "devDependencies": {
         "ava": "^2.1.0",
         "eslint": "^6.5.1",
-        "eslint-config-richienb": "^0.1.2"
+        "eslint-config-richienb": "^0.2.0"
     },
     "eslintConfig": {
         "extends": "richienb/node"
