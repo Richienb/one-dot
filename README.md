@@ -15,15 +15,15 @@ npm install one-dot
 ```js
 const oneDot = require("one-dot");
 
-oneDot({ name: "richie-bendall.ml", type: "a" });
-//=> [{ name: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.8.130' }, { name: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.9.130' }]
+oneDot({ domain: "richie-bendall.ml", type: "a" }).then(console.log);
+//=> [{ domain: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.8.130' }, { domain: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.9.130' }]
 ```
 
 ## API
 
-### oneDot({name, type, method?})
+### oneDot({domain, type, method?}, callback?)
 
-#### name
+#### domain
 
 Type: `string`
 
@@ -41,3 +41,9 @@ Type: `string`\
 Default: `https`
 
 The method of contacting the 1.1.1.1 service. Can be `https` or `tls`.
+
+##### callback
+
+Type: `Function`
+
+If you don't want to use promises, you can specify a callback here.

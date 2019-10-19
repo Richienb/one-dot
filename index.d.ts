@@ -28,20 +28,26 @@ interface DNSData {
 
 /**
  * Get the DNS records for a domain using HTTPS or TLS over DNS.
- * @param obj.name The domain name to search.
+ * @param obj.domain The domain name to search.
  * @param obj.type The type of DNS record to search.
  * @param obj.method The method of contacting the 1.1.1.1 service.
  * @example
  * ```
  * const oneDot = require("one-dot");
- * oneDot({ name: "richie-bendall.ml", type: "a" })
- * //=> [{ name: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.8.130' }, { name: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.9.130' }]
+ * oneDot({ domain: "richie-bendall.ml", type: "a" })
+ * //=> [{ domain: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.8.130' }, { domain: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.9.130' }]
  * ```
  */
-declare function oneDot({ name, type, method }: {
-    name: string,
+declare function oneDot({ domain, type, method }: {
+    domain: string,
     type: string | number,
     method: "https" | "tls" | "HTTPS" | "TLS" = "https"
 }): Promise<DNSData[]>
+
+declare function oneDot({ domain, type, method }: {
+    domain: string,
+    type: string | number,
+    method: "https" | "tls" | "HTTPS" | "TLS" = "https",
+}, callback: (error: Error | null, result: DNSData[] | void) => any): void
 
 export = oneDot
