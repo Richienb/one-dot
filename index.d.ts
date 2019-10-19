@@ -1,26 +1,47 @@
 import Promise from "bluebird"
 
 /**
- * Get the DNS records for a domain using HTTPS over DNS.
- * @param name The domain name to search.
- * @param type The type of DNS record to search.
- * @param dnssec Validate the records with DNSSEC.
+ * The data returned by the DNS search.
+ * ```
+ */
+interface DNSData {
+    /**
+     * The domain name assigned to the record.
+     */
+    domain: string,
+
+    /**
+     * The type of record.
+     */
+    type: string,
+
+    /**
+     * The "Time to live" value of the record.
+     */
+    ttl: number,
+
+    /**
+    * The data of the record.
+    */
+    data: string
+}
+
+/**
+ * Get the DNS records for a domain using HTTPS or TLS over DNS.
+ * @param obj.name The domain name to search.
+ * @param obj.type The type of DNS record to search.
+ * @param obj.method The method of contacting the 1.1.1.1 service.
  * @example
  * ```
- * const dns = require("one-dot");
- * dns({ name: "richie-bendall.ml", type: "a" })
- * //=> [{ name: 'richie-bendall.ml.', type: 1, TTL: 200, data: '104.28.8.130' }, { name: 'richie-bendall.ml.', type: 1, TTL: 200, data: '104.28.9.130' }]
+ * const oneDot = require("one-dot");
+ * oneDot({ name: "richie-bendall.ml", type: "a" })
+ * //=> [{ name: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.8.130' }, { name: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.9.130' }]
  * ```
-*/
-export declare function https({ name, type, dnssec }: {
+ */
+declare function oneDot({ name, type, method }: {
     name: string,
-    type: string,
-    dnssec: boolean = true
-}): Promise
+    type: string | number,
+    method: "https" | "tls" | "HTTPS" | "TLS" = "https"
+}): Promise<DNSData[]>
 
-export declare function tls({ name, type }: {
-    name: string,
-    type: string
-}): Promise
-
-export = https;
+export = oneDot

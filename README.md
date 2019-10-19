@@ -13,29 +13,31 @@ npm install one-dot
 ## Usage
 
 ```js
-const theModule = require("one-dot");
+const oneDot = require("one-dot");
 
-theModule("unicorns");
-//=> 'unicorns & rainbows'
+oneDot({ name: "richie-bendall.ml", type: "a" });
+//=> [{ name: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.8.130' }, { name: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.9.130' }]
 ```
 
 ## API
 
-### theModule(input, options?)
+### oneDot({name, type, method?})
 
-#### input
+#### name
 
 Type: `string`
 
-Lorem ipsum.
+The domain name to search.
 
-#### options
+#### type
 
-Type: `object`
+Type: `string or number`
 
-##### postfix
+The [type of DNS record](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4) to search.
+
+##### method
 
 Type: `string`\
-Default: `rainbows`
+Default: `https`
 
-Lorem ipsum.
+The method of contacting the 1.1.1.1 service. Can be `https` or `tls`.
