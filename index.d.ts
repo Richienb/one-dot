@@ -1,8 +1,5 @@
-import Promise from "bluebird"
-
 /**
  * The data returned by the DNS search.
- * ```
  */
 interface DNSData {
     /**
@@ -27,27 +24,61 @@ interface DNSData {
 }
 
 /**
- * Get the DNS records for a domain using HTTPS or TLS over DNS.
- * @param obj.domain The domain name to search.
- * @param obj.type The type of DNS record to search.
- * @param obj.method The method of contacting the 1.1.1.1 service.
- * @example
- * ```
- * const oneDot = require("one-dot");
- * oneDot({ domain: "richie-bendall.ml", type: "a" })
- * //=> [{ domain: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.8.130' }, { domain: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.9.130' }]
- * ```
- */
-declare function oneDot({ domain, type, method }: {
-    domain: string,
-    type: string | number,
-    method: "https" | "tls" | "HTTPS" | "TLS" = "https"
-}): Promise<DNSData[]>
+ * The return type for the functions.
+*/
+declare type ReturnedDNSData = Promise<DNSData[]>
 
-declare function oneDot({ domain, type, method }: {
-    domain: string,
-    type: string | number,
-    method: "https" | "tls" | "HTTPS" | "TLS" = "https",
-}, callback: (error: Error | null, result: DNSData[] | void) => any): void
+/**
+ * Get the DNS records for a domain using DNS over HTTPS or DNS over TLS.
+*/
+declare interface oneDot {
+    /**
+     * Get the DNS records for a domain using DNS over HTTPS.
+     * @param obj.domain The domain name to obtain the DNS records for.
+     * @param obj.type The type of DNS record to obtain.
+     * @example
+     * ```
+     * const oneDot = require("one-dot");
+     * oneDot({ domain: "richie-bendall.ml", type: "a" })
+     * //=> [{ domain: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.8.130' }, { domain: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.9.130' }]
+     * ```
+     */
+    ({ domain, type }: {
+        domain: string,
+        type: string | number
+    }): ReturnedDNSData
+
+    /**
+     * Get the DNS records for a domain using DNS over HTTPS.
+     * @param obj.domain The domain name to obtain the DNS records for.
+     * @param obj.type The type of DNS record to obtain.
+     * @example
+     * ```
+     * const oneDot = require("one-dot");
+     * oneDot.https({ domain: "richie-bendall.ml", type: "a" })
+     * //=> [{ domain: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.8.130' }, { domain: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.9.130' }]
+     * ```
+    */
+    https({ domain, type }: {
+        domain: string,
+        type: string | number
+    }): ReturnedDNSData
+
+    /**
+     * Get the DNS records for a domain using DNS over TLS.
+     * @param obj.domain The domain name to obtain the DNS records for.
+     * @param obj.type The type of DNS record to obtain.
+     * @example
+     * ```
+     * const oneDot = require("one-dot");
+     * oneDot.tls({ domain: "richie-bendall.ml", type: "a" })
+     * //=> [{ domain: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.8.130' }, { domain: 'richie-bendall.ml.', type: "A", ttl: 200, data: '104.28.9.130' }]
+     * ```
+    */
+    tls({ domain, type }: {
+        domain: string,
+        type: string | number
+    }): ReturnedDNSData
+}
 
 export = oneDot

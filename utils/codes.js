@@ -1,5 +1,5 @@
 module.exports = {
-    rcodeNum: {
+    returnCodeNumber: {
         0: "No Error",
         1: "Format Error",
         2: "Server Failure",
@@ -21,7 +21,7 @@ module.exports = {
         22: "Bad Truncation",
         23: "Bad/missing Server Cookie",
     },
-    rcodeID: {
+    returnCodeID: {
         NoError: ["No Error", 0],
         FormErr: ["Format Error", 1],
         ServFail: ["Server Failure", 2],
@@ -44,13 +44,13 @@ module.exports = {
         BADTRUNC: ["Bad Truncation", 22],
         BADCOOKIE: ["Bad/missing Server Cookie", 23],
     },
-    http: {
+    httpCode: {
         400: "DNS query not specified or too small.",
         413: "DNS query is larger than maximum allowed DNS message size.",
         415: "Unsupported content type.",
         504: "Resolver timeout while waiting for the query response.",
     },
-    recordtype: {
+    recordType: {
         1: "A",
         2: "NS",
         3: "MD",

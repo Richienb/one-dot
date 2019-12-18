@@ -21,29 +21,31 @@ oneDot({ domain: "richie-bendall.ml", type: "a" }).then(console.log);
 
 ## API
 
-### oneDot({domain, type, method?}, callback?)
+### oneDot(options)
 
-#### domain
+### oneDot.https(options)
+
+### oneDot.tls(options)
+
+#### options
+
+Type: `object`
+
+##### domain
 
 Type: `string`
 
-The domain name to search.
+The domain name to obtain the DNS records for.
 
-#### type
+##### type
 
 Type: `string or number`
 
-The [type of DNS record](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4) to search.
+The [type of DNS record](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4) to obtain.
 
-##### method
+## Upgrading from v1
 
-Type: `string`\
-Default: `https`
-
-The method of contacting the 1.1.1.1 service. Can be `https` or `tls`.
-
-##### callback
-
-Type: `Function`
-
-If you don't want to use promises, you can specify a callback here.
+- Removed the `method` option. Instead use `oneDot` or `oneDot.https` for HTTPS and `oneDot.tls` for TLS.
+- The Promise system has been changed to use native Promises via async/await instead of Bluebird.
+- Callback support has been removed.
+- `TypeError`s instead of `ReferenceError`s are now returned if an invalid `domain` or `type` is provided.
