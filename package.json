@@ -25,7 +25,7 @@
         "dns"
     ],
     "dependencies": {
-        "@sindresorhus/is": "^1.2.0",
+        "@sindresorhus/is": "^2.0.0",
         "dns-over-tls": "^0.0.8",
         "ky": "^0.16.1",
         "ky-universal": "^0.3.0"
